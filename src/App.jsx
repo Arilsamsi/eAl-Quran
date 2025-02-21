@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import ReactAudioPlayer from "react-audio-player";
@@ -11,6 +11,7 @@ import {
   BookOpen,
   AlertCircle,
   ArrowUp,
+  Play,
 } from "lucide-react";
 import MobileSurahDetailPopup from "./components/MobileSurahDetailPopup";
 
@@ -43,6 +44,8 @@ function ScrollToTopButton() {
 }
 
 function App() {
+  const audioRef = useRef(null);
+  const ayatRefs = useRef({});
   const [darkMode, setDarkMode] = useState(false);
   const [surahs, setSurahs] = useState([]);
   const [selectedSurah, setSelectedSurah] = useState(null);
@@ -53,6 +56,30 @@ function App() {
   const [error, setError] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [showMobileDetailPopup, setShowMobileDetailPopup] = useState(false);
+  const [playingAyat, setPlayingAyat] = useState(null);
+
+  const toggleAudio = (url, ayatNomor) => {
+    if (!audioRef.current) return; // Pastikan audioRef sudah tersedia
+
+    if (audioRef.current.src !== url) {
+      audioRef.current.src = url;
+      audioRef.current.play();
+      setPlayingAyat(ayatNomor);
+    } else if (!audioRef.current.paused) {
+      audioRef.current.pause();
+      setPlayingAyat(null);
+    } else {
+      audioRef.current.play();
+      setPlayingAyat(ayatNomor);
+    }
+
+    if (ayatRefs.current[ayatNomor]) {
+      ayatRefs.current[ayatNomor].scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  };
 
   const handleClosePopup = () => {
     setShowMobileDetailPopup(false);
@@ -244,6 +271,7 @@ function App() {
                         />
                       </div>
                     )}
+                    <audio ref={audioRef} controls className="hidden" />
                   </div>
 
                   <p className="mb-4 text-justify">
@@ -260,8 +288,16 @@ function App() {
                           <span className="font-semibold text-lg">
                             {ayat.nomorAyat}.
                           </span>
-                          <button onClick={() => setAudioUrl(ayat.audio["05"])}>
-                            <Volume2 className="w-5 h-5 text-blue-500" />
+                          <button
+                            onClick={() =>
+                              toggleAudio(ayat.audio["05"], ayat.nomorAyat)
+                            }
+                          >
+                            {playingAyat === ayat.nomorAyat ? (
+                              <Volume2 className="w-5 h-5 text-blue-500" />
+                            ) : (
+                              <Play className="w-5 h-5 text-blue-500" />
+                            )}
                           </button>
                         </div>
                         <p className="text-right text-2xl font-arabic mb-2">
