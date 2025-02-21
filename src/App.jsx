@@ -141,14 +141,14 @@ function App() {
     >
       {/* Header */}
       <header
-        className={`fixed w-full top-0 ${
+        className={`fixed w-full top-0 z-50 ${
           darkMode ? "bg-gray-800" : "bg-white"
         } shadow-md`}
       >
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Book className="w-8 h-8" />
-            <h1 className="text-2xl font-bold">Al-Qur'an</h1>
+            <h1 className="text-2xl font-bold">eAl-Qur'an</h1>
           </div>
           <button
             onClick={() => setDarkMode(!darkMode)}

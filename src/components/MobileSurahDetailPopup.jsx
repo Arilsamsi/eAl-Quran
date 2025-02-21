@@ -37,10 +37,10 @@ function MobileSurahDetailPopup({ selectedSurah, audioUrl, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 dark:text-white">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 dark:text-white pt-[100px]">
       <div
         ref={containerRef}
-        className="bg-white dark:bg-gray-800 rounded-lg shadow-lg w-full max-w-md max-h-[98vh] overflow-y-auto p-6 relative"
+        className="bg-white dark:bg-gray-800 rounded-lg shadow-lg w-full max-w-md max-h-[90vh] overflow-y-auto p-6 relative"
       >
         {/* Close Button */}
         <button
@@ -53,7 +53,7 @@ function MobileSurahDetailPopup({ selectedSurah, audioUrl, onClose }) {
         {/* Scroll to Top Button */}
         <button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 p-3 rounded-full bg-blue-500 hover:bg-blue-600 transition-colors shadow-lg"
+          className="fixed bottom-5 right-5 p-3 rounded-full bg-blue-500 hover:bg-blue-600 transition-colors shadow-lg"
         >
           <ArrowUp className="w-5 h-5 text-white" />
         </button>
