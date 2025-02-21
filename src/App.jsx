@@ -172,7 +172,7 @@ function App() {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
             <input
               type="text"
-              placeholder="Search Surah..."
+              placeholder="Cari Surah..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className={`w-full pl-10 pr-4 py-2 rounded-lg ${
@@ -231,7 +231,7 @@ function App() {
                       <span className="text-sm opacity-75">{surah.nama}</span>
                     </div>
                     <div className="text-sm opacity-75 mt-1">
-                      {surah.arti} • {surah.jumlahAyat} verses
+                      {surah.arti} • {surah.jumlahAyat} ayat
                     </div>
                   </button>
                 ))}
@@ -312,9 +312,9 @@ function App() {
               ) : (
                 <div className="text-center">
                   <Book className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                  <h3 className="text-xl font-semibold mb-2">Select a Surah</h3>
+                  <h3 className="text-xl font-semibold mb-2">Pilih Surat</h3>
                   <p className="opacity-75">
-                    Choose a Surah from the list to start reading
+                    Pilih Surat dari daftar untuk mulai membaca
                   </p>
                 </div>
               )}
