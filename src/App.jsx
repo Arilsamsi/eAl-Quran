@@ -312,9 +312,9 @@ function App() {
               ) : (
                 <div className="text-center">
                   <Book className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                  <h3 className="text-xl font-semibold mb-2">Pilih Surat</h3>
+                  <h3 className="text-xl font-semibold mb-2">Pilih Surah</h3>
                   <p className="opacity-75">
-                    Pilih Surat dari daftar untuk mulai membaca
+                    Pilih Surah dari daftar untuk mulai membaca
                   </p>
                 </div>
               )}
