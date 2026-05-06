@@ -66,7 +66,12 @@ function MobileSurahDetailPopup({ selectedSurah, audioUrl, onClose }) {
           <p className="text-lg opacity-75 mb-4">{selectedSurah.arti}</p>
           {audioUrl && (
             <div className="p-4 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center space-x-2">
-              <audio ref={audioRef} controls className="w-full max-w-md" />
+              <audio
+                ref={audioRef}
+                src={audioUrl}
+                controls
+                className="w-full max-w-md"
+              />
             </div>
           )}
         </div>
